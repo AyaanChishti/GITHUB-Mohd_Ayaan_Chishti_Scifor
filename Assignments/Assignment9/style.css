@@ -1,0 +1,31 @@
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    list-style-type: none;
+    padding: 30px 100px;
+    background-color: rgb(61, 61, 61);
+  
+    li {
+      font-size: 1.5rem;
+  
+      a {
+        color: wheat;
+        text-decoration: none;
+      }
+    }
+  }
+  
+  p {
+    width: 500px;
+  }
+  
+  p::first-letter {
+    font-size: 30px;
+    color: darkblue;
+    font-weight: bold;
+  }
+  
+  p::first-line {
+    color: darkgreen;
+    font-style: italic;
+  }
