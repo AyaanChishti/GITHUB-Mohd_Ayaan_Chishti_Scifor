@@ -1,0 +1,74 @@
+/* Base styles */
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background: linear-gradient(135deg, #f9fafb, #e0e7ff);
+  padding: 40px 20px;
+  margin: 0;
+  text-align: center;
+  color: #333;
+}
+
+/* Quiz container */
+.quiz-container {
+  max-width: 500px;
+  margin: auto;
+  background: #ffffff;
+  padding: 30px 25px;
+  border-radius: 12px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+}
+
+/* Headings */
+.quiz-container h1 {
+  margin-bottom: 20px;
+  color: #1f2937;
+}
+
+.quiz-container h2 {
+  margin-top: 0;
+  color: #1d4ed8;
+}
+
+/* Buttons */
+button {
+  padding: 12px 24px;
+  background-color: #3b82f6;
+  color: #fff;
+  font-size: 16px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  margin-top: 20px;
+}
+
+button:hover {
+  background-color: #2563eb;
+}
+
+/* Option buttons */
+#options button {
+  display: block;
+  width: 100%;
+  margin: 10px 0;
+  background-color: #f3f4f6;
+  color: #111827;
+  border: 1px solid #d1d5db;
+  font-weight: 500;
+}
+
+#options button:hover {
+  background-color: #e5e7eb;
+}
+
+/* Hide class */
+.hide {
+  display: none;
+}
+
+/* Responsive design */
+@media (max-width: 600px) {
+  .quiz-container {
+    padding: 20px;
+  }
+}
