@@ -9,11 +9,11 @@ body {
   color: #333;
 }
 
-/* Add a backdrop behind the quiz container for better readability */
+/* A backdrop behind the quiz container for better readability */
 .quiz-container {
   max-width: 500px;
   margin: auto;
-  background: rgba(255, 255, 255, 0.9); /* semi-transparent background */
+  background: rgba(255, 255, 255, 0.9);
   padding: 30px 25px;
   border-radius: 12px;
   box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
@@ -66,6 +66,26 @@ button:hover {
 .hide {
   display: none;
 }
+
+/* Timer */
+#timer {
+  font-size: 18px;
+  margin-bottom: 15px;
+  color: #d97706;
+  font-weight: bold;
+}
+
+/* Feedback Colors */
+.correct {
+  background-color: #16a34a !important;
+  color: white !important;
+}
+
+.wrong {
+  background-color: #dc2626 !important;
+  color: white !important;
+}
+
 
 /* Responsive design */
 @media (max-width: 600px) {
