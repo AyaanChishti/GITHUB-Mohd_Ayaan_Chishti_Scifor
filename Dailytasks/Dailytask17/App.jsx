@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 
 function App() {
   const [message, setMessage] = useState('');
@@ -19,13 +19,40 @@ function App() {
     }
   };
 
+  useEffect(() => {
+    // Reset body margin and padding for full centering
+    document.body.style.margin = '0';
+    document.body.style.padding = '0';
+  }, []);
+
   return (
-    <div style={{ textAlign: 'center', marginTop: '3rem' }}>
+    <div
+      style={{
+        height: '100vh',
+        display: 'flex',
+        justifyContent: 'center',
+        alignItems: 'center',
+        flexDirection: 'column',
+        textAlign: 'center',
+        backgroundColor: 'black',
+        width: '100vw',
+      }}
+    >
       <h1>Delete Post Example</h1>
-      <button onClick={handleDelete} style={{ padding: '10px 20px', fontSize: '16px' }}>
+      <button
+        onClick={handleDelete}
+        style={{
+          padding: '10px 20px',
+          fontSize: '16px',
+          cursor: 'pointer',
+          marginTop: '10px',
+        }}
+      >
         Delete Post ID 1
       </button>
-      {message && <p style={{ marginTop: '20px' }}>{message}</p>}
+      {message && (
+        <p style={{ marginTop: '20px', fontWeight: 'bold', color: '#333' }}>{message}</p>
+      )}
     </div>
   );
 }
