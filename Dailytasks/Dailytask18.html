@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>PATCH Method Example</title>
+</head>
+<body>
+
+  <h2>User Status Updater</h2>
+  <div id="user">
+    <p><strong>Name:</strong> Priys</p>
+    <p><strong>Email:</strong> abc@example.com</p>
+    <p><strong>Status:</strong> <span id="status">active</span></p>
+    <button onclick="updateStatus()">Toggle Status</button>
+  </div>
+
+  <p id="message"></p>
+
+  <script>
+    let currentStatus = 'active';
+
+    function updateStatus() {
+      // Toggle status
+      const newStatus = currentStatus === 'active' ? 'inactive' : 'active';
+
+      // PATCH request to ReqRes API (dummy)
+      fetch('https://reqres.in/api/users/2', {
+        method: 'PATCH',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({ status: newStatus })
+      })
+      .then(response => response.json())
+      .then(data => {
+        // Update UI after successful patch
+        currentStatus = newStatus;
+        document.getElementById('status').innerText = currentStatus;
+        document.getElementById('message').innerText = '✅ Status updated successfully!';
+        console.log('Response:', data);
+      })
+      .catch(error => {
+        console.error('Error:', error);
+        document.getElementById('message').innerText = '❌ Failed to update status.';
+      });
+    }
+  </script>
+
+</body>
+</html>
