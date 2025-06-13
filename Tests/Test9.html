@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>React PUT Request Example</title>
+    <script src="https://unpkg.com/react@18/umd/react.development.js" crossorigin></script>
+    <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js" crossorigin></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+    <style>
+      * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+      }
+
+      body {
+        font-family: "Segoe UI", sans-serif;
+        background: linear-gradient(to right, #0f2027, #203a43, #2c5364);
+        height: 100vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+
+      .container {
+        background: rgba(255, 255, 255, 0.1);
+        border-radius: 16px;
+        padding: 30px 40px;
+        max-width: 400px;
+        width: 100%;
+        backdrop-filter: blur(10px);
+        box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+        color: white;
+      }
+
+      h2 {
+        margin-bottom: 20px;
+        text-align: center;
+      }
+
+      label {
+        display: block;
+        margin: 10px 0 5px;
+        font-weight: bold;
+      }
+
+      input {
+        padding: 10px;
+        border-radius: 6px;
+        border: none;
+        width: 100%;
+        outline: none;
+        font-size: 1rem;
+      }
+
+      button {
+        padding: 12px;
+        margin-top: 20px;
+        background-color: #00bcd4;
+        color: white;
+        border: none;
+        border-radius: 6px;
+        font-size: 1rem;
+        width: 100%;
+        cursor: pointer;
+        transition: background 0.3s ease;
+      }
+
+      button:hover {
+        background-color: #0097a7;
+      }
+
+      .success {
+        margin-top: 15px;
+        color: #00e676;
+        font-weight: bold;
+        text-align: center;
+      }
+
+      .error {
+        margin-top: 15px;
+        color: #ff5252;
+        font-weight: bold;
+        text-align: center;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="root"></div>
+
+    <script type="text/babel">
+      const { useState } = React;
+
+      function UpdateUserForm() {
+        const [username, setUsername] = useState('');
+        const [job, setJob] = useState('');
+        const [message, setMessage] = useState('');
+
+        const handleSubmit = (e) => {
+          e.preventDefault();
+          fetch("https://reqres.in/api/users/5", {
+            method: "PUT",
+            headers: {
+              "Content-Type": "application/json",
+            },
+            body: JSON.stringify({
+              name: username,
+              job: job,
+            }),
+          })
+            .then((res) => res.json())
+            .then((data) => {
+              console.log("Updated user:", data);
+              setMessage("✅ User updated successfully!");
+              setTimeout(() => setMessage(""), 3000);
+            })
+            .catch((err) => {
+              console.error("Update failed:", err);
+              setMessage("❌ Update failed!");
+              setTimeout(() => setMessage(""), 3000);
+            });
+        };
+
+        return (
+          <div className="container">
+            <h2>Update User Info</h2>
+            <form onSubmit={handleSubmit}>
+              <label>Username:</label>
+              <input
+                type="text"
+                value={username}
+                onChange={(e) => setUsername(e.target.value)}
+                required
+              />
+              <label>Job:</label>
+              <input
+                type="text"
+                value={job}
+                onChange={(e) => setJob(e.target.value)}
+                required
+              />
+              <button type="submit">Update User</button>
+            </form>
+            {message && (
+              <div className={message.includes("✅") ? "success" : "error"}>
+                {message}
+              </div>
+            )}
+          </div>
+        );
+      }
+
+      const root = ReactDOM.createRoot(document.getElementById("root"));
+      root.render(<UpdateUserForm />);
+    </script>
+  </body>
+</html>
