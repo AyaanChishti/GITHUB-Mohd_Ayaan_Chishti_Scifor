@@ -1,0 +1,7 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+video {
+  pointer-events: none; /* Prevent video from blocking clicks */
+}
